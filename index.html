@@ -259,6 +259,7 @@
                              alt="Ane Emilie Stjernen"
                              class="w-full aspect-[3/4] object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950/40 to-transparent"></div>
+                        <p class="absolute bottom-2 right-3 text-[10px] text-cream-200/40">Foto: Navn Navnesen / Rana No</p>
                     </div>
                     <!-- Decorative element -->
                     <div class="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-gold-400/20 rounded-2xl -z-10 hidden lg:block"></div>
@@ -279,7 +280,7 @@
                         <p>
                             Helt siden jeg var liten har musikken vært en sentral del av livet mitt. Med mange års erfaring
                             som sanger har jeg hatt gleden av å synge i en rekke bryllup, begravelser, minnestunder og
-                            andre begivenheter over hele Norge.
+                            andre begivenheter på Helgeland.
                         </p>
                         <p>
                             Jeg tror at musikk har en unik evne til å berøre, trøste og feire. Uansett om det er en
@@ -539,7 +540,7 @@
             <div x-data="testimonials()" class="relative max-w-4xl mx-auto fade-in">
                 <!-- Testimonial Cards -->
                 <div class="overflow-hidden">
-                    <div class="relative min-h-[280px] sm:min-h-[240px]">
+                    <div class="relative min-h-[320px] sm:min-h-[280px]">
                         <template x-for="(testimonial, index) in items" :key="index">
                             <div x-show="current === index"
                                  x-transition:enter="transition ease-out duration-500"
@@ -710,7 +711,7 @@
                             </div>
                             <div>
                                 <p class="text-sm text-cream-200/40">Telefon</p>
-                                <a href="tel:+4712345678" class="text-cream-100 hover:text-gold-300 transition-colors">+47 123 45 678</a>
+                                <a href="tel:+4794851670" class="text-cream-100 hover:text-gold-300 transition-colors">+47 948 51 670</a>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
@@ -722,7 +723,7 @@
                             </div>
                             <div>
                                 <p class="text-sm text-cream-200/40">Basert i</p>
-                                <p class="text-cream-100">Norge</p>
+                                <p class="text-cream-100">Mo i Rana</p>
                             </div>
                         </div>
                     </div>
@@ -736,6 +737,13 @@
                              class="bg-green-900/30 border border-green-500/30 rounded-xl p-6 text-center">
                             <p class="text-green-400 font-semibold mb-1">Takk for din henvendelse!</p>
                             <p class="text-green-400/60 text-sm">Jeg tar kontakt med deg så snart som mulig.</p>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div x-show="error" x-cloak
+                             class="bg-red-900/30 border border-red-500/30 rounded-xl p-6 text-center">
+                            <p class="text-red-400 font-semibold mb-1">Noe gikk galt!</p>
+                            <p class="text-red-400/60 text-sm">Vennligst prøv igjen eller kontakt meg direkte på e-post.</p>
                         </div>
 
                         <template x-if="!submitted">
@@ -881,7 +889,7 @@
                     </button>
                     <div x-show="openFaq === 4" x-collapse x-cloak class="px-6 pb-5">
                         <p class="text-cream-200/60 text-sm leading-relaxed">
-                            Jeg er basert i Norge og tar oppdrag over hele landet. Reisekostnader kan tilkomme 
+                            Jeg er basert i Mo i Rana og tar oppdrag over hele Helgeland. Reisekostnader kan tilkomme 
                             for arrangementer langt unna, men dette avtaler vi på forhånd.
                         </p>
                     </div>

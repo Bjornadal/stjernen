@@ -146,6 +146,9 @@ function testimonials() {
 }
 
 // ==================== CONTACT FORM ====================
+// Web3Forms - Get your free access key at https://web3forms.com/
+const WEB3FORMS_ACCESS_KEY = '8c70b2bc-8621-4c08-8f16-f2065605cd7c'; // Replace with your Web3Forms access key
+
 function contactForm() {
     return {
         form: {
@@ -158,6 +161,7 @@ function contactForm() {
         },
         sending: false,
         submitted: false,
+        error: false,
         errors: {},
 
         validate() {
@@ -174,32 +178,53 @@ function contactForm() {
             if (!this.validate()) return;
 
             this.sending = true;
+            this.error = false;
 
-            // Simulate sending (replace with actual form submission, e.g. Formspree)
-            // Example with Formspree:
-            // const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(this.form)
-            // });
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        access_key: WEB3FORMS_ACCESS_KEY,
+                        subject: 'Ny booking-forespørsel fra nettsiden',
+                        from_name: 'Ane Emilie Stjernen - Nettside',
+                        name: this.form.name,
+                        email: this.form.email,
+                        phone: this.form.phone,
+                        event_type: this.form.eventType,
+                        date: this.form.date,
+                        message: this.form.message
+                    })
+                });
 
-            await new Promise(resolve => setTimeout(resolve, 1500));
+                const result = await response.json();
 
-            this.sending = false;
-            this.submitted = true;
+                if (result.success) {
+                    this.submitted = true;
 
-            // Reset form after 5 seconds
-            setTimeout(() => {
-                this.submitted = false;
-                this.form = {
-                    name: '',
-                    email: '',
-                    phone: '',
-                    eventType: '',
-                    date: '',
-                    message: ''
-                };
-            }, 5000);
+                    // Reset form after 5 seconds
+                    setTimeout(() => {
+                        this.submitted = false;
+                        this.form = {
+                            name: '',
+                            email: '',
+                            phone: '',
+                            eventType: '',
+                            date: '',
+                            message: ''
+                        };
+                    }, 5000);
+                } else {
+                    this.error = true;
+                }
+            } catch (e) {
+                this.error = true;
+            } finally {
+                this.sending = false;
+            }
         }
     };
 }
